@@ -1,0 +1,19 @@
+on:
+  workflow_dispatch:
+    inputs:
+      tag-name:
+        description: 'The git tag name to bump the formula to'
+        required: true
+
+jobs:
+  homebrew:
+    name: Bump Homebrew formula
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mislav/bump-homebrew-formula-action@v3
+        with:
+          formula-name: my_formula
+          tag-name: ${{ github.event.inputs.tag-name }}
+          download-url: https://example.com/foo/myproject-${{ github.event.inputs.tag-name }}.tar.gz
+        env:
+          COMMITTER_TOKEN: ${{ secrets.COMMITTER_TOKEN }}
