@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: mislav/bump-homebrew-formula-action@v3
         with:
-          formula-name: litmusctl-test
+          formula-name: litmusctl
           tag-name: ${{ github.event.inputs.tag-name }}
           download-url: https://github.com/litmuschaos/litmusctl/archive/refs/tags/${{ github.event.inputs.tag-name }}.tar.gz
         env:
